@@ -53,7 +53,7 @@
 % ---The following code defines the title, author, and date of the document.
 \title{git~\&~\LaTeX{}}
 \date{\today}   % Using \today automatically updates to the document's build date
-\author{ENTER YOUR NAME HERE}
+\author{TAN YAO HONG, BRYAN}
 
 \begin{document}
 \maketitle
@@ -63,11 +63,32 @@
 \maketitle % This causes the title/author information above to be typset neatly.
 
 \begin{lem}[Geometric series]
-	% Enter the statement of the lemma here
+
+	If z is a real number and \abs{z} < 1, then
+	
+	$$1+z+z^2+\dots = \frac{1}{1-z}.$$
+
+	
 \end{lem}
 
 \begin{proof}
-	% Enter the proof of the lemma here
+
+	For any positive integer $n$, let $S_n$ denote the partial sum,
+	
+	$$S_n = 1 + z + z^2 + \dots + z^n.$$
+	
+	Multiplying $S_n$ by $1 - z$ yields
+	
+	$$(1-z)S_n = (1+z+\dots+z^n)-(z+z^2+\dots+z^{n+1})=1-z^{n+1}.$$
+	
+	Therefore,
+	
+	$$S_n = \frac{1-z^{n+1}}{1-z}.$$
+	
+	Since $\abs{z} < 1$, we have $lim_{n \to \infty}z^{n+1} = 0$. It follows that 
+
+	$$lim_{n\to\infty} S_n = \frac{1}{1-z}.$$
+	
 \end{proof}
 
 \end{document}
