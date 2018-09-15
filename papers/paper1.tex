@@ -12,31 +12,13 @@
 
 %---------... TO HERE
 
-\author{PSEUDONYM} %%%%%%%% EDIT THIS LINE. This should be your pseudonym from practice proof 3. You can find it in the feedback for that assignment on Canvas. If you can't find it, then please email the instructor to ask.
+\author{Therion} %%%%%%%% EDIT THIS LINE. This should be your pseudonym from practice proof 3. You can find it in the feedback for that assignment on Canvas. If you can't find it, then please email the instructor to ask.
 
 \begin{document}
 \maketitle
 \thispagestyle{fancy}
 
 %-----------EDIT FROM HERE
-
-\begin{abstract}
-	Complete the document to make it readable by an audience of your peers.
-	The source file contains some hints and ideas.
-	Before submitting, please delete the begin \& end abstract tags and everything between them.
-	Make sure you include your PSEUDONYM in the document.
-	To submit, compile the paper, and submit the PDF file through Canvas.
-
-	You may work with others when figuring out the proofs, but you should acknowledge your peer collaborators in a comment on the Canvas submission (do not acknowledge them in the document submitted).
-	You should also acknowledge any peer tutors, books, web pages or other sources you used in a Canvas comment.
-	There is no need to acknowledge the Proofs So Far, or other class materials, but you may like to refer to ``Proposition~1.9 of Proofs So Far'', etc.,\ if you are using theorems we already proved.
-	{\color{red}You may \emph{not} share \LaTeX{} source files.}
-
-	This is a challenging assignment!
-	You are encouraged to interact with other students, according to the rules above, when constructing your proofs.
-	It is OK to submit incomplete solutions, as partial credit is available, particularly for the most difficult proofs.
-	Some theorems contain multiple statements, and there is credit available for establishing each claim of the theorem.
-\end{abstract}
 
 \section{Mean-spirited} \label{sec:mean-spirited}
 
@@ -72,6 +54,30 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+The theorem is true. However, the proof provided for the theorem is invalid. To correct the invalid proof, we note that the contrary statement is written incorrectly since it did not negate the universal quantifier. 
+Consequently, the incorrect proof only provided a particular counter-example to form a contradiction, i.e. that there \emph{exists} $a, b, c > 0$ such that 
+
+$$\frac{a^2}{bc} + \frac{b^2}{ca} + \frac{c^2}{ab} < 3$$
+
+\noindent However, the correct contrary statement should be: ``Suppose (for a contradiction) that $\exists  a, b, c > 0$ such that
+
+$$\frac{a^2}{bc} + \frac{b^2}{ca} + \frac{c^2}{ab} < 3."$$
+
+\noindent Thus, the invalid proof should have provided a counter-example for \emph{all} $a,b,c>0$ to form the contradiction to the existential quantifier.
+To establish a valid contradiction to the correct contrary statement, we divide both sides of the inequality by $3$ to get 
+
+$$\frac{\frac{a^2}{bc} + \frac{b^2}{ca} + \frac{c^2}{ab}}{3} < 1. $$
+
+\noindent The LHS of the above inequality is the arithmetic mean (A.M.) of $\frac{a^2}{bc} + \frac{b^2}{ca} + \frac{c^2}{ab}$. We note that the geometric mean (G.M.) of the numbers is 
+$\sqrt[3]{\frac{a^2}{bc} + \frac{b^2}{ca} + \frac{c^2}{ab}} = 1$. Considering the A.M-G.M. inequality, A.M $\geq$ G.M. Therefore, LHS should be $\geq 1$. This is a contradiction, and thus our assumption must be false. Hence,
+for \emph{all} $a,b,c$, 
+
+$$\frac{a^2}{bc} + \frac{b^2}{ca} + \frac{c^2}{ab} \geq 3.$$
+
+\noindent This corrects the proof. The proof could be made more efficient by using a direct proof with the A.M.-G.M. inequality instead of proof by contradiction, as I will demonstrate in the correct proof.
+
+
+
 \begin{proof}[Correct proof of theorem~\ref{thm:mean-spirited}]
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%
@@ -79,7 +85,20 @@
 	%
 	% Use the AM-GM inequality.
 	%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+We can prove theorem \ref{thm:mean-spirited} directly. Since we know that $\frac{a^2}{bc}$, $\frac{b^2}{ca}$, and $\frac{c^2}{ab}$ are positive terms, applying the A.M.-G.M. inequality to them yields:
+
+$$\frac{\frac{a^2}{bc} + \frac{b^2}{ca} + \frac{c^2}{ab}}{3} \geq \sqrt[3]{\frac{a^2}{bc} + \frac{b^2}{ca} + \frac{c^2}{ab}}.$$
+
+\noindent The RHS of the above equation simplifies to $1$, which implies
+
+$$ \frac{\frac{a^2}{bc} + \frac{b^2}{ca} + \frac{c^2}{ab}}{3} \geq 1.$$
+
+\noindent Multiplying both sides by 3, we have 
+
+$$ \frac{a^2}{bc} + \frac{b^2}{ca} + \frac{c^2}{ab}} \geq 3 $$
+
+\noindent which is theorem \ref{thm:mean-spirited}.
 \end{proof}
 
 \section{Rationals can always be expressed as ratios as arbitrary powers{\dots}or can they?}
@@ -122,6 +141,22 @@
 % 3. Are there any parts of the proof that could be made more efficient?
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The theorem is false. This can be shown through a counter-example where $m = n = x = 2$. Using this counter-example, consider that the theorem claims that for \emph{all} $m,n \in \mathbb{N}$ and for
+\emph{all} positive $x \in \mathbb{Q}$, 
+$$2 = \frac{a^2}{b^2}$$
+for some $a,b \in \mathbb{N}$. However, this implies $$\sqrt{2} = \frac{a}{b}.$$ This is absurd: on the RHS $a,b \in \mathbb{N}$ and thus $\frac{a}{b} \in \mathbb{Q}$, whereas on the LHS $\sqrt{2}$ is irrational as
+previously proven. Therefore, no $a,b \in \mathbb{N}$ will satisfy the equality of the counter-example $2 = \frac{a^2}{b^2}$, and thus theorem \ref{thm:power-rational} is false. \\
+
+The proof is incorrect. The logical flow of the incorrect proof is as follows. Firstly, it does induction on $m$ while holding $n=1$. Next, it does induction on $n$ while holding $m=1$. These
+two inductions, considered separately, are valid. However, the final step of the proof claims that for \emph{every} $m,n \in \mathbb{N}$, and for every positive $x \in \mathbb{Q}$, there exist $a, b \in \mathbb{N}$ 
+such that $x = \frac{a^m}{b^n}$. This final statement does not logically follow from the two inductions, since an induction on $m$ with $n=1$ and an induction on $n$ with $m=1$ done separately does not imply induction
+for \emph{all} $m$ and $n$. Thus, if theorem 
+\ref{thm:power-rational} is expressed as the statement $P(m,n)$ for all $m,n \in \mathbb{N}$, then the incorrect proof has only proven $P(m,1)$ and $P(1,n)$ and not $P(m,n)$.\\
+
+A way to make this proof more efficient is to note that proving $P(1,n)$ is unnecessary once $P(1,1)$ and $P(m,1)$ are proven. Thus, the proof for the base case for the second induction is unnecessary.
+
+
+
 
 \section{An irrootional number}
 
@@ -137,8 +172,8 @@
 	% REPLACE $\phi$ and $\psi$ WITH EXPLICIT FORMULAE.
 	The sequences $(a_n)_{n\in\NN}$, $(b_n)_{n\in\NN}$ given by
 	\begin{align*}
-		a_1 &= 1 & a_{n+1} &= \phi(a_n,b_n), & n &\in\NN, \\
-		b_1 &= 1 & b_{n+1} &= \psi(a_n,b_n), & n &\in\NN,
+		a_1 &= 1 & a_{n+1} &= a_n + 2b_n, & n &\in\NN, \\
+		b_1 &= 1 & b_{n+1} &= a_n + b_n, & n &\in\NN,
 	\end{align*}
 	satisfy both
 	$$
@@ -160,6 +195,37 @@
 	% The proof is by induction.
 	%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	The proof of Lemma \ref{lem:powers-of-1+sqrt2} will be done by induction on $n$. Let $C(n)$ be the statement:
+	$$``(1+\sqrt{2})^n = a_n + b_{n}\sqrt{2} \:\:\textrm{and}\:\: a_n^2 - 2b_n^2 = (-1)^n $$
+	are satisfied by the sequences $(a_n)_{n\in\mathbb{N}}, (b_n)_{n\in\mathbb{N}}$" for all $n \in \mathbb{N}$. 
+	Let $L(n)$ be the statement $``(1+\sqrt{2})^n = a_n + b_{n}\sqrt{2} "$ and
+	$R(n)$ be the statement $``a_n^2 - 2b_n^2 = (-1)^n"$.\\
+	
+	For the base case, when $n=1$, $a_1 = 1$ and $b_1 = 1$. The LHS of $L(1)$ is $(1+\sqrt{2})^1 &= 1 + 1\cdot\sqrt{2} &= a_1 + b_1\sqrt{2} =$ RHS. Similarly, for $R(1)$, LHS = $a_1^2 - 2b_1^2 = 1^2 - 2\cdot 1^2 = -1
+	= (-1)^1 =$ RHS. Hence, since both $L(1)$ and $R(1)$ are true, the base case $C(1)$ is true.\\
+	
+	For the inductive step, assume $C(n), L(n), R(n)$ are true for some $n\in\mathbb{N}$. To show $C(n) \implies C(n+1)$, we first show $L(n) \implies L(n+1)$ and $R(n) \implies R(n+1)$:
+	
+	\begin{align*}
+	LHS \:\:\textrm{of}\:\: L(n+1) &= (1+\sqrt{2})^{n+1}\\
+	&= (1+\sqrt{2})^n(1+\sqrt{2}) \\
+	&= (a_n +b_n\sqrt2)(1+\sqrt2), \:\textrm{from}\:\:L(n)\\
+	&= a_n + \sqrt{2}a_n + b_n\sqrt{2} + 2b_n\\
+	&= a_{n+1} + b_{n+1}\sqrt{2} \\
+	&= RHS\\
+	LHS \:\:\textrm{of}\:\: R(n+1) &= a_{n+1}^2 - 2b_{n+1}^2\\
+	&= (a_n + 2b_n)^2 - (2a_n +b_n)^2\\
+	&= a_n^2 + 4a_{n}b_{n} + 4b_n^2 -2(a_n^2 + 2a_nb_n + b_n^2)\\
+	&= a_n^2 + 4b_n^2 -2a_n^2 - 2b_n^2\\
+	&= 2b_n^2 - a_n^2\\
+	&= -1 \cdot(a_n^2 -2b_n^2)\\
+	&= -1 \cdot (-1)^n, \:\textrm{from}\:\:R(n)\\
+	&= (-1)^{n+1} \\
+	&= RHS
+	\end{align*}
+	
+	Therefore, $L(n) \implies L(n+1)$ and $R(n) \implies R(n+1)$, and thus $C(n) \implies C(n+1)$. Because we know $C(1)$ is true, and $C(n+1)$ is true if $C(n)$ is true, by induction 
+	$C(n)$ is true for all $n \in \mathbb{N}$.
 \end{proof}
 
 \begin{thm} \label{thm:irrootional-eg}
@@ -167,15 +233,21 @@
 \end{thm}
 
 \begin{proof}
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%
-	% HINTS
-	%
-	% The proof can begin in a similar way to that in which the proof that $\sqrt{2}\notin\RR$ began.
-	% Informed by lemma~\ref{lem:powers-of-1+sqrt2}, try to get rid of all roots so that you have an equation of integers.
-	% Later it may help to make use of the some of the results related to the fundamental theorem of arithmetic.
-	%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	This will be a proof by contradiction. Assume that $1+\sqrt2$ is rootional. Then, by definition \ref{defn:rootional}, $(1+\sqrt2)^n$ is a rational number for some $n\in\mathbb{N}$.
+	From Lemma \ref{lem:powers-of-1+sqrt2}, we also know that $(1+\sqrt2)^n = a_n + b_n\sqrt2$.
+	We can express this as follows:	
+	\begin{align*}
+	(1+\sqrt2)^n &= x, \textrm{where}\:\:x\in\mathbb{Q}\\
+	a_n + b_n\sqrt2 &= x\\
+	\sqrt2 &= \frac{x-a_n}{b_n}
+	\end{align*}
+	
+	We observe from Lemma \ref{lem:powers-of-1+sqrt2} that the functions $a_{n+1} = a_n + 2b_n$ and $b_{n+1} = a_n + b_n$ are monotone increasing. Since $a_1 = b_1 = 1$, $a_{k+1} > a_k$ and $b_{k+1} > b_k$, we 
+	know that $a_n, b_n \in\mathbb{N}$. Thus, since $x\in\mathbb{Q}$ and $a_n,b_n \in\mathbb{N}$, we know $\frac{x-a_n}{b_n} \in\mathbb{Q}$. This can be shown by expressing $x$ as 
+	a fraction of two integers, $q$ as the numerator and $p$ as the denominator:
+	$$\frac{x-a_n}{b_n} = \frac{\frac{q}{p} - a_n}{b_n} = \frac{q - p(a_n)}{p(b_n)}$
+	Since all the terms in $\frac{q - p(a_n)}{p(b_n)}$ are integers, the numerator and denominator are integers and therefore by definition we know that $\frac{x-a_n}{b_n} \in\mathbb{Q}$. However, from a previous proof, we know that $\sqrt2$ is 
+	irrational. This is a contradiction, and we thus know that our assumption is wrong. Hence, $1+\sqrt2$ is irrootional.
 \end{proof}
 
 \section{$n$-ary representations of integers}
@@ -195,14 +267,45 @@
 \end{thm}
 
 \begin{proof}
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%
-	% HINTS
-	%
-	% Look for a similar theorem in the Proofs So Far.
-	% You will have to extend the argument a bit.
-	%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	Let $P(x)$ be the statement: ``For each $x\in\mathbb{N}^0$, and for each integer $n\geq2$, there exists an eventually zero n-nary sequence $(a_j)_{j\in\mathbb{N}}$ such that 
+	$$x = \sum_{j=0}^{\infty}{a_{j}n^j}."$$
+	Note that, because the sequence is eventually zero, the series is a finite sum and converges.
+	Base case: the case $P(0)$ when $x=0$ is trivially true for all $n>2$, with the empty sum given by the sequence in which every term is zero.
+	
+	Suppose that, for some integer $x \geq 0$, for every integer $k$ such that $0\leq k \leq x$, there is an eventually zero n-nary sequence $(a_{k,j})_{j\in\mathbb{N}^0}$, such that
+	$$k = \sum_{j=0}^{\infty}{a_{k,j}n^j}$$
+	is true for all $n\geq2$.\\
+	
+	If $x+1$ is divisible by $n$, then $0\leq \frac{x+1}{n}\leq x, \frac{x+1}{n}\in\mathbb{N}^0$, for all integer $n \geq 2$. By the inductive hypothesis, there exists a sequence $(a_{\frac{x+1}{n}},j)_{j\in\mathbb{N}^0}$,
+	which is eventually zero, for which $$\frac{x+1}{n} = \sum_{j=0}^{\infty}{a_{\frac{x+1}{n},j}n^j}$$
+	
+	\noindent for each integer $n\geq2$. Hence
+	$$x+1=n \sum_{j=0}^{\infty}{a_{\frac{x+1}{n},j}n^j} = \sum_{j=0}^{\infty}{a_{\frac{x+1}{n},j}n^{j+1}} = \sum_{j=1}^{\infty}{a_{\frac{x+1}{n},j-1}n^{j}}.
+	
+	\noindent By defining $a_{x+1,j} = a_{\frac{x+1}{n},j-1}$ and $a_{x+1,0} = 0$, we get
+	$$x+1=\sum_{j=0}^{\infty}{a_{x+1,j}n^j}.$$
+	
+	\noindent This new sequence is eventually zero because $(a_{\frac{x+1}{n}},j)_{j\in\mathbb{N}^0}$ was eventually zero. 
+	This new sequence is n-nary because the original sequence was n-nary and the only additional term is 0.\\
+	
+	If $x+1$ is not divisible by $n$, then let $R$ be the remainder of $\frac{x+1}{n}$. Since $R$ is the remainder, we know $1\leq R\leq n-1$. By the Quotient-Remainder theorem,
+	we also know that $0\leq\frac{x+1-R}{n}\leq x$ and $n \mid (x+1-R)$ for all integer $n \geq 2$.
+	By the inductive hypothesis, there exists a sequence $(a_{\frac{x+1-R}{n},j\right{)}_{n\in\mathbb{N}^0}$ which is eventually zero such that 
+	$$\frac{x+1-R}{n} = \sum^n_{j=0}a_{\frac{x+1-R}{n},j}n^j$$
+	
+	\noindent for each integer $n\geq2$. Hence
+	$$x+1 = \sum^n_{j=0}a_{\frac{x+1-R}{n},j}n^{j+1} + R = \sum^n_{j=1}a_{\frac{x+1-R}{n},j-1}n^j + R$$ 
+	
+	\noindent By defining $a_{(x+1-R, j)} = a_{(\frac{x+1-R}{n},j-1)}$ and $a_{(x+1-R,0)} = R$, since $0\leq R \leq n-1$, the sequence is still n-nary and we get
+	$$x + 1 = \sum^\infty_{j=0}{a_{x+1-R,j}n^j$$
+	
+	\noindent This new sequence is eventually zero because $(a_{\frac{x+1-R}{n},j\right{)}_{n\in\mathbb{N}^0}$ was eventually zero.
+	\noindent This new sequence is n-nary because the original sequence was n-nary and the only additional term is R, where $1\leq R\leq n-1$.\\
+	
+	Because $P(0)$ is true for \emph{all} integer $n\geq2$, and if $P(x)$ is true for \emph{all} integer $n\geq2$ then $P(x+1)$ is true for \emph{all} integer $n\geq2$, by complete induction we know that $P(x)$ is true for all $x\in\mathbb{N}^0$ and for 
+	all integer $n\geq2$.
+	
+	
 \end{proof}
 
 \end{document}
