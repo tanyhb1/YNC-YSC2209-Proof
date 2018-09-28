@@ -18,11 +18,6 @@
 
 %-----------EDIT FROM HERE
 
-\begin{abstract}
-	\input{PracticeProofsStandardAbstract.tex}
-	
-	I fitted the whole model solutions onto a little over 1 page.
-\end{abstract}
 
 We explicitly construct a bijection mapping from the unit interval to the whole real line.
 
@@ -35,11 +30,30 @@ We explicitly construct a bijection mapping from the unit interval to the whole 
 \end{thm}
 
 \begin{proof}
-	%--------------EDIT THIS PART--------------%
-	% Prove that $f$ is both a surjection and an injection.
-	% It will help to show that $f$ is strictly increasing.
-	% The intermediate value theorem is also important; if you have not seen it before, then look it up.
-	%------------------------------------------%
+	To prove that the function $f$ is a bijection, we will first prove that $f$ is an injection and a surjection.\\
+	
+	\noindent\emph{Injection}. Consider $f(x) =\frac{1}{1-x} - \frac{1}{x}$. Then, $f'(x) = \frac{1}{(1-x)^2} + \frac{1}{x^2}$. Since $(1-x)^2$ and $x^2$ are always positive for all values of $0 < x < 1$,
+	we know that $f'(x) > 0$ for all $0 < x < 1$. Thus, $f(x) = \frac{1}{1-x} - \frac{1}{x}$ is strictly increasing. Since $f$ is strictly increasing, we know that when $x \neq y$, $f(x) \neq f(y)$. Therefore, $f$ is an 
+	injective function.\\
+	
+	\noindent\emph{Surjection}. Consider $f(1-\frac{1}{M})$ and $f(\frac{1}{M})$ for large $M > 0$. Then, 
+	
+	\begin{align*}
+	f(1-\frac{1}{M}) &= \frac{1}{1-(1-\frac{1}{M})} - \frac{1}{1-\frac{1}{M}} & f(\frac{1}{M}) &= \frac{1}{1-\frac{1}{M}} - \frac{1}{\frac{1}{M}}\\
+					&= \frac{1}{\frac{1}{M}} - \frac{1}{\frac{M-1}{M}} & 					&= \frac{M}{M-1} - M\\
+					&= M - \frac{M}{M-1} & &= -(M-\frac{M}{M-1}) = -f(1-\frac{1}{M})
+	\end{align*}
+	
+	\noindent For large $M > 0$, we observe that $\frac{M}{M-1} \in \mathbb{R}$ and tends to 1 as $M$ increases. Thus, for $f(1-\frac{1}{M})$, $M - \frac{M}{M-1} \in \mathbb{R}$ and
+	$f(1-\frac{1}{M})$ tends to $M - 1$ as $M$ increases.	Since we note that $f(\frac{1}{M}) = -(M-\frac{M}{M-1}) = -f(1-\frac{1}{M})$, $f(\frac{1}{M})$ tends towards $-(M - 1)$. 
+	By using a sufficiently large value of $M > 0$, we know that for every $y \in \mathbb{R}$, $-(M-1) < y < M-1$ since we can always increase $M$ to include a larger magnitude of $y$.
+	Therefore, $f(\frac{1}{M}) < y < f(1-\frac{1}{M})$ for a sufficiently large $M > 0$, and by the intermediate value theorem we know that there exists a $\frac{1}{M} < x < 1-\frac{1}{M}}$ for every 
+	$y\in\mathbb{R}$ where $M>0$ is sufficiently large.\\
+	
+	\noindent Thus, for every $y \in \mathbb{R}$, there exists some $M>0$ such that $f(\frac{1}{M}) < y < f(1-\frac{1}{M})$. When $x = \frac{1}{M}$ and $x = (1-\frac{1}{M})$, we know that $0<x<1$. Hence,
+	$f$ is a surjective function since for each $y\in\mathbb{R}$, $y=f(x)$ for some $0<x<1$.\\
+	
+	\noindent\emph{Bijection}. Since $f$ is an injective function and a surjective function, $f$ is a bijection.
 \end{proof}
 
 \end{document}
