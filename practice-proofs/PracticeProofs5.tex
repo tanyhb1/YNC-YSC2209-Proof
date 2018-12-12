@@ -18,12 +18,6 @@
 
 %-----------EDIT FROM HERE
 
-\begin{abstract}
-	\input{PracticeProofsStandardAbstract.tex}
-	
-	I fitted the whole model solutions onto $1.5$ pages.
-\end{abstract}
-
 We study how cardinality interacts with subsets and power sets.
 
 Recall that we say that two sets are equinumerous if they have the same cardinality.
@@ -36,12 +30,25 @@ The following proposition says that the operation ``take the power set'' preserv
 \end{prop}
 
 \begin{proof}
-	%--------------EDIT THIS PART--------------%
-	% Hint: There must be a bijection $f:X\to Y$.
-	% Pick an arbitrary $S\subset X$.
-	% Think about the process of taking the image of $S$ in $f$.
-	% Is that a function of $S$?
-	%------------------------------------------%
+	Let $f:x\rightarrow y$ and $g:\power(X)\rightarrow \power(Y)$.
+	If $\#X \leq \#Y$, we know that $f$ is injective. We define $g$ by $g(A) = \{ f(x) : x\in A \}$, where $A\subset \power(X)$. For $A,B \subset \power(X)$, 
+	\begin{alignat}{2}
+	&&g(A) &= g(B)\notag\\
+	\implies\quad&& \{ f(x): x\in A \} &= \{ f(x) : x \in B \}\notag\\
+	\implies\quad&& A &= B\notag
+	\end{alignat}
+	Thus, since $g(A) = g(B)$ if and only if $A = B$, we know that $g$ is injective when $f$ is injective. Hence, if $\#X\leq \#Y$, $g$ is injective and therefore $\# \power(X) \leq \# \power(Y)$.\\
+	
+	If we suppose that $\#X = \#Y$, then $f$ is bijective. To show $\# \power(X) = \# \power(Y)$, we have to show that $g$ is not only injective as shown above but also surjective. We know $g$ is surjective 
+	if and only if $\forall Z \subset \power(Y), \exists A \subset \power(X)$ such that $g(A) = Z$. Hence, 
+	\begin{alignat}{2}
+	&&g(A) &= Z\notag\\
+	\implies\quad && \{f(x) : x \in A \} &= Z\notag\\
+	\implies\quad && A &= \{ f^{-1}(x) : x \in Z \}\notag
+	\end{alignat}
+	
+	where $f^{-1}$ exists and is a bijective function because $f$ is a bijective function. Thus, $g$ is surjective when $f$ is bijective. Because $g$ is both injective and surjective and thus bijective when $f$ is bijective, we know that 
+	$\# \power(X) = \# \power(Y)$ when $\#X = \#Y$.
 \end{proof}
 
 \begin{prop} \label{prop:SubsetCardinality}
@@ -49,9 +56,13 @@ The following proposition says that the operation ``take the power set'' preserv
 \end{prop}
 
 \begin{proof}
-	%--------------EDIT THIS PART--------------%
-	% Hint: Directly construct an injection.
-	%------------------------------------------%
+	Let $f : X \rightarrow Y$. Define $f$ by $f(x) = x$, where $x\in X$ and $f(x)=x \in Y$ since $X\subset Y$. Thus, for $a,b \in X$, 	
+	\begin{alignat}{2}
+	&&f(a) &= f(b) \notag\\
+	\implies\quad&& a &= b \notag
+	\end{alignat}
+	
+	and we know $f$ is injective since $f(a) = f(b)$ if and only if $a = b$. Since $f$ is injective when $X \subset Y$, $\# X\leq \# Y$.
 \end{proof}
 
 \begin{cor} \label{cor:IntersectionCardinality}
@@ -59,9 +70,7 @@ The following proposition says that the operation ``take the power set'' preserv
 \end{cor}
 
 \begin{proof}
-	%--------------EDIT THIS PART--------------%
-	% Hint: Use proposition~\ref{prop:SubsetCardinality}.
-	%------------------------------------------%
+	Let $S = X\cap Y$. We know that $S \subset X$ and $S \subset Y$. Thus, from Proposition 2, since $S \subset X$, $ \# S \leq \# X$, and therefore $\# (X \cap Y) \leq \# X$.
 \end{proof}
 
 \end{document}

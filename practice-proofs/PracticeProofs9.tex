@@ -18,11 +18,6 @@
 
 %-----------EDIT FROM HERE
 
-\begin{abstract}
-	\input{PracticeProofsStandardAbstract.tex}
-	
-	I fitted the whole model solutions onto 2 pages.
-\end{abstract}
 
 We argue that real multiplication, as defined through multiplication of rational Cauchy sequences, satisfies the corresponding five field axioms.
 
@@ -32,11 +27,19 @@ We argue that real multiplication, as defined through multiplication of rational
 \end{lem}
 
 \begin{proof}
-	%--------------EDIT THIS PART--------------%
-	% Hint: The idea is to argue that there is a rational Cauchy sequence in $x$ for which at most finitely many terms are less than $M$.
-	% Try contradiction; you should end up proving $x=0_\RR$.
-	% After that, you can fix the finitely many ``problem'' terms without changing the equivalence class of your Cauchy sequence.
-	%------------------------------------------%
+	Suppose $x\in\RR\setminus\{0_\RR\}$ and that there is a rational Cauchy sequence in $x$, $(a_n)_{n\in\mathbb{N}}$, for which infinitely many terms are lesser than or equal to $M$.
+	This means that, for any $\epsilon > 0$, there is a natural number $N = N(\epsilon)$ such that, for all $m, n > N$, 
+	$|a_m - a_n| < \epsilon$. That is, for $m,n > N$, $$|a_m -a_n| < \epsilon.$$ Re-arranging by the triangle inequality, we know that 
+	$$|a_m| < \epsilon + |a_n|.$$ Note that we can select $n > N(\epsilon)$ such that $|a_n| \leq \epsilon$ and thus $|a_m| < 2\epsilon$.
+	This is a contradiction since $a_m \rightarrow 0$ as $m \rightarrow \infty$, which means that $x = 0_\RR$. 
+	Since we supposed that $x\in\RR\setminus\{0_\RR\}$, we thus know that there is a rational Cauchy sequence in $x$ 
+	for which at most finitely many terms are less than $M$. We call this 
+	sequence $(b_n)_{n\in\NN}$.
+	From Proposition 11.1, we know that adding two rational Cauchy sequences will give us a rational Cauchy sequence.
+	Thus, we can form a rational Cauchy sequence in $x$ for which every term has $|x_n| > M$ by adding a rational Cauchy sequence 
+	$(c_n)_{n\in\NN}$ that is a subsequence of $(b_n)_{n\in\NN}$ such that every of its terms is greater than $M$. We know that 
+	$(c_n)_{n\in\NN}$ is Cauchy by Proposition 11.4. Thus, the resulting rational Cauchy sequence $(x_n)_{n\in\NN}$
+	has every term $|x_n| > M$ and $(x_n)_{n\in\NN}$ belongs to the equivalence class $x$.
 \end{proof}
 
 \begin{thm} \label{thm:RealMultiplication}
@@ -44,11 +47,34 @@ We argue that real multiplication, as defined through multiplication of rational
 \end{thm}
 
 \begin{proof}
-	%--------------EDIT THIS PART--------------%
-	% Hint: Axioms~(6)--(9) essentially follow from the corresponding properties for rational numbers.
-	% For axiom~(10), the tricky part is showing that the sequence you want to represent the multiplicative inverse is actually a Cauchy sequence.
-	% It might be easiest to start by structuring the proof as if you have a magical lemma that guarantees the sequence is Cauchy, then go back and fill the gap, using lemma~\ref{lem:ExistsNonzeroCauchySequence} and some ingenuity.
-	%------------------------------------------%
+	Suppose throughout that $x,y,z \in \RR$, and $(x_n)_{n\in\NN}, (y_n)_{n\in\NN}, (z_n)_{n\in\NN} \in C_\QQ$ are representatives of the equivalence classes $x, y, z$ respectively.
+	\begin{enumerate}
+	\setcounter{enumi}{5}
+	\item \textbf{Closure under multiplication.} We know that $(x_n + y_n)_{n\in\NN}$ is a rational Cauchy sequence. Therefore, $(x_n)_{n\in\NN} \otimes (y_n)_{n\in\NN}$ belongs to some equivalence class of $\sim$, which we call $x\otimesbar y\in\RR$.
+	\item \textbf{Commutativity of multiplication.} From above, $x\otimesbar y$ is the equivalence class to which $(x_n)_{n\in\NN} \otimes (y_n)_{n\in\NN}$ belongs. But rational multiplication commutes, so $x_n \otimes y_n = y_n \otimes x_n$, and it follows that 
+	$(x_n \otimes y_n)_{n\in\NN} = (y_n \otimes x_n)_{n\in\NN}$. Hence, $(y_n \otimes x_n)_{n\in\NN} = (y_n)_{n\in\NN} \otimes (x_n)_{n\in\NN}$ is a representative of the equivalence class $y \otimesbar x$. So $x \otimesbar y = y \otimesbar x$.
+	\item \textbf{Associativity of multiplication.} Note that rational multiplication is associative, so $(x_n \times y_n) \times z_n = x_n \times (y_n \times z_n)$. It follows that multiplication of Cauchy sequences is associative, so 
+	$$((x_n)_{n\in\NN} \otimes (y_n)_{n\in\NN}) \otimes  (z_n)_{n\in\NN}) = (x_n)_{n\in\NN} \otimes ( (y_n)_{n\in\NN})\otimes (z_n)_{n\in\NN} ).$$
+	\item \textbf{Existence of multiplicative identity.} Let $1_\RR$ be the equivalence class containing the Cauchy sequence $(1)_{n\in\NN}$, whose every term is the rational number $1$. Then $x \otimesbar 0_\RR$ is the equivalence class
+	with member	$(x_n)_{n\in\NN} \otimes (1)_{n\in\NN} = (x_n)_{n\in\NN}$, so $x\otimesbar 1_\RR = x$.
+	\item \textbf{Existence of multiplicative inverses.} Suppose that $x\in \RR \setminus \{0_\RR\}$ is an 
+	equivalence class of rational Cauchy sequences. We select a representative, $(x_n)_{n\in\NN}$ such that every term 
+	$x_n > K$ for an arbitrary $K$. We know by Lemma 1 that this representative belongs to $x$ and is a rational Cauchy sequence.
+	Since multiplicative inverses exist in the rationals, $\forall x_n \in \QQ \setminus \{0\}$,
+	$\exists x'_n$ such that $x_n \times x'n = 1_\QQ$. We know that $(y_n)_{n\in\NN}$ is rational. To prove that it is also Cauchy,
+	suppose $\epsilon > 0$,
+	\begin{align*}
+		|y_m - y_n| &= \frac{|y_m \times x_n \times x_m - y_n \times x_n \times x_m|}{|x_n \times x_m|}\\
+					&= \frac{|x_n - x_m|}{|x_n \times x_m|} \leq \frac{|x_n - x_m|}{M^2}.
+	\end{align*}
+	Because we know that $(x_n)_{n\in\NN}$ is Cauchy, for all $\delta > 0$ there exists $N(\delta) \in \NN$ such that 
+	for all $n > N(\delta)$, $|x_n - x_m| < \delta$. Therefore, for $m,n > N(M^2 \times \epsilon)$, 
+	\begin{align*}
+	|y_m - y_n| \leq \frac{|x_n - x_m|}{M^2} < \frac{M^2 \times \epsilon}{M^2} < \epsilon
+	\end{align*}
+	and we thus know that $(y_n)_{n\in\NN}$ is also Cauchy. Consequently, by Lemma 1, let $y\in\RR$ be an equivalence class that 
+	contains $(y_n)_{n\in\NN}$, so $x \otimesbar y$ \ni (x_n)_{n\in\NN} \otimes (y_n)_{n\in\NN} = (x_n y_n)_{n\in\NN} = (1_\QQ$)_{n\in\NN}$, 
+	where $y$ is the multiplicative inverse of the equivalence class $x$.
 \end{proof}
 
 \end{document}

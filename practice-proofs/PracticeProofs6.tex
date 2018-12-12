@@ -18,11 +18,6 @@
 
 %-----------EDIT FROM HERE
 
-\begin{abstract}
-	\input{PracticeProofsStandardAbstract.tex}
-	
-	I fitted the whole model solutions onto 1 page.
-\end{abstract}
 
 We study the cardinality of ordinary and disjoint unions of countable sets.
 
@@ -31,9 +26,23 @@ We study the cardinality of ordinary and disjoint unions of countable sets.
 \end{lem}
 
 \begin{proof}
-	%--------------EDIT THIS PART--------------%
-	% Hint: Direct proof.
-	%------------------------------------------%
+	Since $\#A = \#B = \aleph_0$, there exists a bijection from $A$ to $\mathbb{N}$ and from $B$ to $\mathbb{N}$. Thus, we define $f:A\rightarrow\mathbb{N}$ as a bijection from $A$ to $\mathbb{N}$ and 
+	$g:B\rightarrow\mathbb{N}$ as a bijection from $B$ to $\mathbb{N}$.\\
+	
+	By the Fundamental Theorem of Arithmetic, there exists a unique prime factorisation up to reordering for each $x \in \mathbb{N}$. Thus, we define $h: A\times B \rightarrow \mathbb{N}$ by $h(a,b) = 2^{f(a)} \cdot
+	3^{g(b)}$. We know that $h$ is injective because by the Fundamental Theorem of Arithmetic, for every $a\in A$, $b \in B$, and $f(a) \in \mathbb{N}$, $g(b) \in \mathbb{N}$, $h(a,b) = 2^{f(a)} \cdot
+	3^{g(b)} \in \mathbb{N} $ is unique. Hence, $\#(A\times B) \leq \aleph_0$. \\
+	
+	Next, we define $j: \mathbb{N} \rightarrow A \times B$ by $j(x) = (x, 1)$. Since for $x,y \in \mathbb{N}$,
+	\begin{alignat}{2}
+	&&j(x) &= j(y) \notag \\
+	\implies\quad&& (x,1) &= (y,1) \notag \\
+	\implies\quad&& x & = y \notag
+	\end{alignat}
+	
+	Hence, $j$ is injective because $j(x) = j(y)$ if and only if $x = y$. Hence, $ \#(A\times B) \geq \aleph_0$. By the Cantor-Schröder–Bernstein theorem, 
+	since  $\#(A\times B) \leq \aleph_0$ and $ \#(A\times B) \geq \aleph_0$,
+	$\#(A\times B) = \aleph_0$.
 \end{proof}
 
 \begin{prop} \label{prop:CardinalityUnions2}
@@ -44,12 +53,21 @@ We study the cardinality of ordinary and disjoint unions of countable sets.
 \end{prop}
 
 \begin{proof}
-	%--------------EDIT THIS PART--------------%
-	% Hint: Start by recalling the definition of disjoint union.
-	% Find separately an injection and a surjection to the disjoint union of interest, and use the CSB theorem.
-	%------------------------------------------%
-\end{proof}
-
+	By definition, $\bigsqcup\limits_{j\in J} A_j = \bigcup\limits_{j\in J} \{ (x,j) : x \in A_j \}$. Thus, 
+	\begin{align*}
+	 \# \bigsqcup\limits_{j\in J} A_j &= \# \bigcup\limits_{j\in J} \{ (x,j) : x \in A_j \} = \sum\limits_{j=1}^{J} \# (A_j \times \{j\}) = \sum\limits_{j=1}^{J} \# A_j
+	\end{align*}
+	
+	Since $A_j$ is a non-empty set, $\#A_{j, j\in J} > 0$, and thus $\sum\limits_{j=1}^{J} \# A_j \geq \#J$. We know $\#J =\aleph_0$, and therefore $\sum\limits_{j=1}^{J} \# A_j \geq \aleph_0$ 
+	and $\# \bigsqcup\limits_{j\in J} A_j \geq \aleph_0$.
+	\\
+	\\
+	
+	To show $\# \bigsqcup\limits_{j\in J} A_j  \leq \aleph_0$, let $f: \mathbb{N} \times J \rightarrow \bigsqcup\limits_{j\in J} A_j$. $f$ is surjective if $\forall Z\subset \bigsqcup\limits_{j\in J} A_j$, 
+	$\exists X \subset (\mathbb{N} \times J)$ such that $f(X) = \bigsqcup\limits_{j\in J} A_j$. Because every set of ordered pairs $\bigsqcup\limits_{j\in J} A_j$ can be represented as the Cartesian product of $X \times J$, where $X \subset \mathbb{N}$ and $\#J = \aleph_0$,
+	we know that $f$ is surjective. Hence, $\# (\mathbb{N} \times J) \geq \# \bigsqcup\limits_{j\in J} A_j$. By Lemma $1$, since $\# \mathbb{N} = \aleph_0$ and $\#J = \aleph_0$, $\# (\mathbb{N} \times J) = \aleph_0$.
+	Thus, $ \# \bigsqcup\limits_{j\in J} A_j \leq \aleph_0$. By the Cantor-Schröder–Bernstein theorem, because $\# \bigsqcup\limits_{j\in J} A_j \geq \aleph_0$ and $ \# \bigsqcup\limits_{j\in J} A_j \leq \aleph_0$, $ \# \bigsqcup\limits_{j\in J} A_j = \aleph_0$.
+	
 \begin{prop} \label{prop:CardinalityUnions3}
 	If, for each $j\in J$, $\#A_j\leq\aleph_0$, and $\#J=\aleph_0$, then
 	$$
@@ -58,9 +76,16 @@ We study the cardinality of ordinary and disjoint unions of countable sets.
 \end{prop}
 
 \begin{proof}
-	%--------------EDIT THIS PART--------------%
-	% Hint: Direct construction.
-	%------------------------------------------%
+	Let $f: \bigsqcup\limits_{j\in J} A_j \rightarrow \bigcup\limits_{j\in J} A_j$. Note that $\bigsqcup\limits_{j\in J} A_j = \bigcup\limits_{j\in J} \{ (x,j) : x \in A_j \}$. We thus define
+	$f$ by $f(A) = \bigcup\limits_{j\in J} \{ x : x \in A_j \}$, where $A \subset \bigsqcup\limits_{j\in J} A_j$ and $f(A) \subset \bigcup\limits_{j\in J} A_j$. \\
+	\\
+	
+	If $f$ is surjective, then $\forall Z \subset \bigcup\limits_{j\in J} A_j$,
+	$\exists X \subset \bigsqcup\limits_{j\in J} A_j$ such that $f(X) =  Z$. We know that for every such $Z$, 
+	there exists a $X$ where $X \subset \bigsqcup\limits_{j\in J} A_j$ and $f(X) = Z$ because $\bigsqcup\limits_{j\in J} A_j = \bigcup\limits_{j\in J} \{ (x,j) : x \in A_j\}$, which is the set of ordered pairs of $(x,j)$. 
+	This means that it is possible to represent every $Z\subset \bigcup\limits_{j\in J} A_j$ by taking a $X \subset \bigsqcup\limits_{j\in J} A_j$ and applying function $f$ to it, which returns the union of every element
+	$x \in X$, which is what we wanted.
+	Thus, $f$ is surjective, and $\#\bigsqcup\limits_{j\in J}A_j \geq \#\bigcup\limits_{j\in J} A_j$. Since we know $\#\bigsqcup\limits_{j\in J}A_j = \aleph_0$ from Proposition 2, $\#\bigcup\limits_{j\in J} A_j \leq \aleph_0$.
 \end{proof}
 
 \end{document}

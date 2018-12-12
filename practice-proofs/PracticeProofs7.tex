@@ -18,11 +18,6 @@
 
 %-----------EDIT FROM HERE
 
-\begin{abstract}
-	\input{PracticeProofsStandardAbstract.tex}
-	
-	I fitted the whole model solutions onto $4/3$ pages.
-\end{abstract}
 
 Here we take for granted the set of integers, and all familiar properties of addition, subtraction, and multiplication of integers.
 We also take for granted the ``integral domain'' property of integers, which states that $xy = 0$ implies $x = 0$ or $y = 0$, for all integers $x,y$.
@@ -42,9 +37,50 @@ For example, $(2,4)\sim(12,24)$, and they both correspond to the rational number
 \end{thm}
 
 \begin{proof}
-	%--------------EDIT THIS PART--------------%
-	% Hint: Direct proof that $\sim$ satisfies each of the three properties of an equivalence relation.
-	%------------------------------------------%
+	I will show that the relation $\sim$ is an equivalence relation on the set $F$ by demonstrating that $\sim$ satisfies the three properties of an equivalence relation.\\
+	
+	\noindent\emph{Reflexivity}. $\forall a \in F$, where $a=(x,y) \in \mathbb{Z}^2$ such that $x,y \in \mathbb{Z}$ and $y \neq 0$,
+	\begin{alignat}{2}
+	&& a &\sim a \notag\\
+	\implies\quad&& (x,y) &\sim (x,y)\notag\\
+	\implies\quad&& xy &= xy \notag
+	\end{alignat}	
+	\noindent Thus, by definition of reflexivity, we know that the relation $\sim$ is reflexive.\\
+	
+	\noindent\emph{Symmetry}. $\forall a,b \in F$, where $a = (a_x, a_y) \in \mathbb{Z}^2$ and $b = (b_x, b_y) \in \mathbb{Z}^2$,	
+	\begin{alignat}{2}
+	&&a &\sim b \qquad&&\qquad &b &\sim a &\notag\\
+	\implies\quad&& (a_x, a_y) &\sim (b_x, b_y) \qquad&&\implies\quad&(b_x, b_y) &\sim (a_x, a_y) &\notag\\
+	\implies\quad&& a_x(b_y) &= a_y(b_x)  \qquad&&\implies\quad&b_x(a_y) &= b_y(a_x) &\notag\\ 
+	\implies\quad&& b_x(a_y) &= b_y(a_x)  \qquad&&\implies\quad&a_x(b_y) &= a_y(b_x) &\notag\\
+	\implies\quad&& b &\sim a \qquad&&\implies\quad& a&\sim b&\notag\\\notag
+	\end{alignat}
+	
+	\noindent Thus, by definition of symmetry, the relation $\sim$ is symmetric since $\forall a,b \in F$, $a\sim b$ if and only if $b\sim a$.\\
+	
+	\noindent\emph{Transitivity}. $\forall a,b,c \in F$, suppose $a \sim b$ and $b \sim c$. Then we know 
+	\begin{alignat}{2}
+	&&a &\sim b \qquad&&\qquad &b&\sim c &&\notag\\
+	\implies\quad&& (a_x,a_y) &\sim (b_x, b_y) \qquad&&\implies\quad &(b_x, b_y) &\sim (c_x, c_y)&&\notag\\
+	\implies\quad&& a_x(b_y) &= a_y(b_x) \qquad&&\implies\quad &b_x(c_y) &= b_y(c_x)\notag
+	\end{alignat}
+
+\noindent Multiplying $a_x(b_y) = a_y(b_x)$ by $b_x(c_y)$,  	
+	\begin{alignat}{2}
+	&& a_x(b_y) &= a_y(b_x)\notag\\
+	\implies\quad&& a_x(b_y)\times b_x(c_y) &= a_y(b_x) \times b_x(c_y)\notag\\
+	\implies\quad&& a_x(b_y)\times b_x(c_y) &= a_y(b_x) \times b_y(c_x)\notag\\
+	\implies\quad&& a_x(c_y) \times b_x(b_y) &= a_y(c_x) \times b_x(b_y)\notag
+	\end{alignat}
+	
+\noindent By definition of fractions, we know that $a_y, b_y, c_y \neq 0$. Consequently, we can apply the cancellation property to cancel out $b_x(b_y)$: 
+	\begin{alignat}{2}
+	&& a_x(c_y) \times b_x(b_y) &= a_y(c_x) \times b_x(b_y)\notag\\
+	\implies\quad&& a_x(c_y) & = a_y(c_x) \notag \\
+	\implies\quad&& a &\sim c \notag
+	\end{alignat}
+	
+	\noindent Thus, since $a \sim b$ and $b \sim c$ implies $a \sim c$, the relation $\sim$ is transitive. Because the relation $\sim$ on set $F$ satisfies the three properties of an equivalence relation, $\sim$ is an equivalence relation on the set $F$.
 \end{proof}
 
 \end{document}
